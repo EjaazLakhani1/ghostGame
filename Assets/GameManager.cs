@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject cubePrefab;
-
+    private GameObject playerObj;
+    public Camera camera;
     void Start()
     {
         InvokeRepeating("MoveCube", 0.0f, 2.0f);
@@ -39,15 +40,12 @@ public class GameManager : MonoBehaviour
         }
         Quaternion rotation = Quaternion.identity;
         GameObject cube = Instantiate(cubePrefab, position, Quaternion.identity);
-        cube.name = "Cube";
-        id++;
+        cube.name = "Cube-" + id;
+        id++;        
     }
 
     void Update()
     {
-        //GameObject cube0 = GameObject.Find("Cube-0");
-        
-
 
     }
 }
