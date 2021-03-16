@@ -21,21 +21,21 @@ public class movingCubes : MonoBehaviour
             if(go.name == name) {
                 GameObject cube0 = GameObject.Find(name);
 
-                if (cube0.transform.position.z > 0.0f) {
+                if (cube0.transform.position.z > 1.5f) {
                         cube0.transform.position += cube0.transform.forward * -0.02f; 
                 }
-                if (cube0.transform.position.z < 0.0f) {
+                if (cube0.transform.position.z < -1.5f) {
                     cube0.transform.position += cube0.transform.forward * 0.02f; 
                 }
-                if (cube0.transform.position.x > 0.0f) {
+                if (cube0.transform.position.x > 1.5f) {
                     cube0.transform.position += cube0.transform.right * -0.02f; 
                 }
-                if (cube0.transform.position.x < 0.0f) {
+                if (cube0.transform.position.x < -1.5f) {
                     cube0.transform.position += cube0.transform.right * 0.02f; 
                 }
             }
-            id++;
         }
+        id++;
         
     }
 }
