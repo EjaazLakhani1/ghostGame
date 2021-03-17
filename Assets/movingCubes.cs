@@ -9,13 +9,14 @@ public class movingCubes : MonoBehaviour
     public Camera camera;
     void Start()
     {
-
+        
     }
 
     int id = 0;
     // Update is called once per frame
     void Update()
     {
+        
         foreach(GameObject go in GameObject.FindObjectsOfType(typeof(GameObject))) {
             name = "Cube-" + id;
             if(go.name == name) {
