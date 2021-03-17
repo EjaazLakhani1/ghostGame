@@ -5,19 +5,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject cubePrefab;
-    private GameObject playerObj;
-    public Camera camera;
+    public GameObject ghostPrefab;
+
     void Start()
     {
-        InvokeRepeating("MoveCube", 0.0f, 2.0f);
+        InvokeRepeating("MoveGhost", 0.0f, 2.0f);
 
     }
 
     // Update is called once per frame
 
     int id = 0;
-    void MoveCube() 
+    void MoveGhost() 
     {
         float rand = Random.Range(-5.0f, 5.0f);
         float pick = Random.Range(0,10.0f);
@@ -39,14 +38,15 @@ public class GameManager : MonoBehaviour
             }
         }
         Quaternion rotation = Quaternion.identity;
-        GameObject cube = Instantiate(cubePrefab, position, Quaternion.identity);
-        cube.name = "Cube-" + id;
+        GameObject ghost = Instantiate(ghostPrefab, position, Quaternion.identity);
+        ghost.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f); 
+        ghost.name = "Ghost-" + id;
         id++;        
     }
 
     void Update()
     {
-
+        
 
     }
 }
