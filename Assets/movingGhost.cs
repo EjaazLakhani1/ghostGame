@@ -21,7 +21,7 @@ public class movingGhost : MonoBehaviour
             name = "Ghost-"+id;
             if(go.name == name) {
                 GameObject cube0 = GameObject.Find(name);
-
+                
                 if (cube0.transform.position.z > 1.5f) {
                     cube0.transform.position += cube0.transform.forward * -0.02f; 
                 }

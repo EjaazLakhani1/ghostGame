@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
         GameObject ghost = Instantiate(ghostPrefab, position, Quaternion.identity);
         ghost.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f); 
         ghost.name = "Ghost-" + id;
+        var trans = 0.05f;
+        var col = ghost.GetComponent<Renderer> ().material.color;
+        col.a = trans;
         id++;        
     }
 
