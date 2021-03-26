@@ -18,11 +18,14 @@ extern "C" void RegisterStaticallyLinkedModulesGranular()
 	void RegisterModule_GameCenter();
 	RegisterModule_GameCenter();
 
-	void RegisterModule_JSONSerialize();
-	RegisterModule_JSONSerialize();
-
 	void RegisterModule_Input();
 	RegisterModule_Input();
+
+	void RegisterModule_InputLegacy();
+	RegisterModule_InputLegacy();
+
+	void RegisterModule_JSONSerialize();
+	RegisterModule_JSONSerialize();
 
 	void RegisterModule_ParticleSystem();
 	RegisterModule_ParticleSystem();
@@ -138,7 +141,7 @@ class BoxCollider;
 class CapsuleCollider; 
 class CharacterController; 
 class MeshCollider; template <> void RegisterUnityClass<MeshCollider>(const char*);
-class SphereCollider; 
+class SphereCollider; template <> void RegisterUnityClass<SphereCollider>(const char*);
 class TerrainCollider; 
 class WheelCollider; 
 class FakeComponent; 
@@ -279,7 +282,7 @@ void RegisterAllClasses()
 {
 void RegisterBuiltinTypes();
 RegisterBuiltinTypes();
-	//Total: 60 non stripped classes
+	//Total: 61 non stripped classes
 	//0. AudioBehaviour
 	RegisterUnityClass<AudioBehaviour>("Audio");
 	//1. AudioClip
@@ -400,5 +403,7 @@ RegisterBuiltinTypes();
 	RegisterUnityClass<MeshCollider>("Physics");
 	//59. PhysicsManager
 	RegisterUnityClass<PhysicsManager>("Physics");
+	//60. SphereCollider
+	RegisterUnityClass<SphereCollider>("Physics");
 
 }
