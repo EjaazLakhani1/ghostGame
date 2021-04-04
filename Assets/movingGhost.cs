@@ -7,37 +7,29 @@ public class movingGhost : MonoBehaviour
 // Start is called before the first frame update
     public GameObject ghost;
     public Camera camera;
+    int thisID;
     void Start()
     {
-        
+        name = "Ghost-"+GameManager.id;
+        thisID = GameManager.id;
+        GameManager.id += 1;
+        ghost = GameObject.Find("Ghost-"+thisID);
     }
 
-    int id = 0;
+    
     // Update is called once per frame
+
     void Update()
-    {
-        
-        foreach(GameObject go in GameObject.FindObjectsOfType(typeof(GameObject))) {
-            name = "Ghost-"+id;
-            if(go.name == name) {
-                GameObject cube0 = GameObject.Find(name);
-                
-                if (cube0.transform.position.z > 1.5f) {
-                    cube0.transform.position += cube0.transform.forward * -0.02f; 
-                }
-                if (cube0.transform.position.z < -1.5f) {
-                    cube0.transform.position += cube0.transform.forward * 0.02f; 
-                }
-                if (cube0.transform.position.x > 1.5f) {
-                    cube0.transform.position += cube0.transform.right * -0.02f; 
-                }
-                if (cube0.transform.position.x < -1.5f) {
-                    cube0.transform.position += cube0.transform.right * 0.02f; 
-                }
-            }
-        }
-        id++;
-        
+    {   
+        float step = 1.0f * Time.deltaTime;
+        ghost.transform.position = Vector3.MoveTowards(ghost.transform.position, new Vector3(0.0f, 1.0f, 0.0f), step);
+
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        Destroy(ghost);
+        GameManager.health -= 10;
+        Debug.Log(GameManager.health);
     }
 }
 
