@@ -34,6 +34,7 @@ public class movingCubes : MonoBehaviour
                 if (cube0.transform.position.x < -1.5f) {
                     cube0.transform.position += cube0.transform.right * 0.02f; 
                 }
+                
             }
         }
         id++;

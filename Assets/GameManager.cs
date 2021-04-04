@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject ghostPrefab;
     public GameObject bulletPrefab;
-
+    public GameObject shieldPrefab;
+    public static int id = 1;
+    public static int health = 100;
 
     void Start()
     {
@@ -16,8 +18,6 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-
-    int id = 0;
     void MoveGhost() 
     {
         float rand = Random.Range(-5.0f, 5.0f);
@@ -42,13 +42,11 @@ public class GameManager : MonoBehaviour
         Quaternion rotation = Quaternion.identity;
         GameObject ghost = Instantiate(ghostPrefab, position, Quaternion.identity);
         ghost.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f); 
-        //ghost.name = "Ghost-" + id;
-        var trans = 0.05f;
-        var col = ghost.GetComponent<Renderer> ().material.color;
-        col.a = trans;
-        //id++;        
+        ghost.transform.LookAt(new Vector3(0, 0.95f, 0));
+          
     }
     int count = 0;
+    
     void Update()
     {
         //if (Input.touchCount > 0) {
@@ -61,7 +59,9 @@ public class GameManager : MonoBehaviour
                 Vector3 camPosition = cam.transform.position;
                 Quaternion camRotation = cam.transform.rotation;
                 GameObject sphere = Instantiate(bulletPrefab, camPosition, camRotation);
+                sphere.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             }
+            
         //}
 
     }

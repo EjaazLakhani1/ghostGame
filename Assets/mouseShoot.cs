@@ -22,12 +22,13 @@ public class mouseShoot : MonoBehaviour
             name = "Sphere-" + id;
             //if(go.name == name) {
                 GameObject bullet = GameObject.Find(name);
-                bullet.transform.position += transform.forward * 0.002f;
+                bullet.transform.position += transform.forward * 0.01f;
 
                 //bullet.transform.Translate(path * 0.02f);
         
             //}
         }
+        
         id++;
     }
 }
