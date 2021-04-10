@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,11 +11,17 @@ public class GameManager : MonoBehaviour
     public GameObject shieldPrefab;
     public static int id = 1;
     public static int health = 100;
+    public static int score = 0;
+    public static int bulletId = 1;
+    public Text healthText;
+    public Text scoreText;
+    public TextAnchor alignment;
 
     void Start()
     {
         InvokeRepeating("MoveGhost", 0.0f, 2.0f);
-
+        healthText.GetComponent<UnityEngine.UI.Text>().text = "Health: " + health.ToString();
+        scoreText.GetComponent<UnityEngine.UI.Text>().text = "Score: " + score.ToString();
     }
 
     // Update is called once per frame
@@ -61,7 +68,9 @@ public class GameManager : MonoBehaviour
                 GameObject sphere = Instantiate(bulletPrefab, camPosition, camRotation);
                 sphere.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             }
-            
+
+            healthText.text = "Health: " + health.ToString();
+            scoreText.text = "Score: " + score.ToString();
         //}
 
     }

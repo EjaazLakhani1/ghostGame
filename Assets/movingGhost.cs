@@ -6,7 +6,6 @@ public class movingGhost : MonoBehaviour
 {
 // Start is called before the first frame update
     public GameObject ghost;
-    public Camera camera;
     int thisID;
     void Start()
     {
