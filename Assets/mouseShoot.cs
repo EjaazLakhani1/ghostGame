@@ -4,31 +4,37 @@ using UnityEngine;
 
 public class mouseShoot : MonoBehaviour
 {
-    public GameObject sphere;
+    public GameObject bullet;
+    public GameObject shield;
+    public float radius = 15.0f;
+    int thisID;
     // Start is called before the first frame update
     void Start()
     {
-
+        name = "Bullet-"+GameManager.bulletId;
+        thisID = GameManager.bulletId;
+        GameManager.bulletId += 1;
+        bullet = GameObject.Find("Bullet-"+thisID);
+        shield = GameObject.Find("Cylinder");
+        Physics.IgnoreCollision(bullet.GetComponent<Collider>(),shield.GetComponent<Collider>(),true);
     }
-    int id = 0;
     // Update is called once per frame
-    bool fired = false;
+
     void Update()
     {
-        
         GameObject cam = GameObject.Find("AR Camera");
         Vector3 path = cam.transform.forward;
-        foreach(GameObject go in GameObject.FindObjectsOfType(typeof(GameObject))) {
-            name = "Sphere-" + id;
-            //if(go.name == name) {
-                GameObject bullet = GameObject.Find(name);
-                bullet.transform.position += transform.forward * 0.01f;
-
-                //bullet.transform.Translate(path * 0.02f);
-        
-            //}
+        float step = 10.0f * Time.deltaTime;
+        bullet.transform.position += transform.forward * step;
+        float distance = Vector3.Distance(shield.transform.position,bullet.transform.position);
+        if (distance >= radius) {
+            Destroy(bullet);
         }
-        
-        id++;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        Destroy(bullet);
+        GameManager.score += 10;
+        Debug.Log("test");
     }
 }

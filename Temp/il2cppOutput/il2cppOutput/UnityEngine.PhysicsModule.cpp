@@ -1433,6 +1433,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR PhysicsScene_tEDFCAA935450E8EBB7732353D9AA264
 		return L_0;
 	}
 }
+// System.Void UnityEngine.Physics::IgnoreCollision(UnityEngine.Collider,UnityEngine.Collider,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Physics_IgnoreCollision_m0C99CADD1F937D967C23803147B9C22D6EC428E9 (Collider_t5E81E43C2ECA0209A7C4528E84A632712D192B02 * ___collider10, Collider_t5E81E43C2ECA0209A7C4528E84A632712D192B02 * ___collider21, bool ___ignore2, const RuntimeMethod* method)
+{
+	typedef void (*Physics_IgnoreCollision_m0C99CADD1F937D967C23803147B9C22D6EC428E9_ftn) (Collider_t5E81E43C2ECA0209A7C4528E84A632712D192B02 *, Collider_t5E81E43C2ECA0209A7C4528E84A632712D192B02 *, bool);
+	static Physics_IgnoreCollision_m0C99CADD1F937D967C23803147B9C22D6EC428E9_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Physics_IgnoreCollision_m0C99CADD1F937D967C23803147B9C22D6EC428E9_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Physics::IgnoreCollision(UnityEngine.Collider,UnityEngine.Collider,System.Boolean)");
+	_il2cpp_icall_func(___collider10, ___collider21, ___ignore2);
+}
 // System.Boolean UnityEngine.Physics::Raycast(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Physics_Raycast_m9DE0EEA1CF8DEF7D06216225F19E2958D341F7BA (Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  ___origin0, Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  ___direction1, float ___maxDistance2, int32_t ___layerMask3, int32_t ___queryTriggerInteraction4, const RuntimeMethod* method)
 {
