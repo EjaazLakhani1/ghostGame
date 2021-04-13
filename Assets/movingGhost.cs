@@ -6,7 +6,9 @@ public class movingGhost : MonoBehaviour
 {
 // Start is called before the first frame update
     public GameObject ghost;
+    public GameObject bullet;
     int thisID;
+    int otherID;
     void Start()
     {
         name = "Ghost-"+GameManager.id;
@@ -14,7 +16,6 @@ public class movingGhost : MonoBehaviour
         GameManager.id += 1;
         ghost = GameObject.Find("Ghost-"+thisID);
     }
-
     
     // Update is called once per frame
 
@@ -27,8 +28,9 @@ public class movingGhost : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         Destroy(ghost);
-        GameManager.health -= 10;
-        Debug.Log(GameManager.health);
+        if (other.gameObject.name == "Cylinder") {
+            GameManager.health -= 10;
+        }
     }
 }
 
