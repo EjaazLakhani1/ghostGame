@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject ghostPrefab;
     public GameObject bulletPrefab;
     public GameObject shieldPrefab;
+    public GameObject gunPrefab;
+
     public static int id = 1;
     public static int health = 100;
     public static int score = 0;
@@ -22,7 +24,20 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("MoveGhost", 0.0f, 2.0f);
         healthText.GetComponent<UnityEngine.UI.Text>().text = "Health: " + health.ToString();
         scoreText.GetComponent<UnityEngine.UI.Text>().text = "Score: " + score.ToString();
+
+        Text healthLeft = GameObject.Find("Health").GetComponent<Text>();
+
+        GameObject cam = GameObject.Find("AR Camera");
+        Vector3 position = cam.transform.position;
+        Quaternion rotation = Quaternion.identity;
+        rotation.eulerAngles = new Vector3(-90.0f, 0, 0);
+        GameObject gun = Instantiate(gunPrefab, position, rotation);
+        gun.transform.localScale = new Vector3(2f, 2f, 2f); 
+        gun.name = "Blaster";
+        
     }
+
+    
 
     // Update is called once per frame
     void MoveGhost() 
@@ -53,25 +68,33 @@ public class GameManager : MonoBehaviour
           
     }
     int count = 0;
-    
+    int newCount = 0;
     void Update()
     {
         //if (Input.touchCount > 0) {
             //Touch touch = Input.GetTouch(0);
             //if (touch.phase == TouchPhase.Began) {
             count++;
+            GameObject cam = GameObject.Find("AR Camera");
             if (Input.GetMouseButton(0) && count > 10) {
                 count = 0;
-                GameObject cam = GameObject.Find("AR Camera");
                 Vector3 camPosition = cam.transform.position;
                 Quaternion camRotation = cam.transform.rotation;
                 GameObject sphere = Instantiate(bulletPrefab, camPosition, camRotation);
-                sphere.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                sphere.transform.localScale = new Vector3(50.0f, 50.0f, 50.0f);
             }
 
             healthText.text = "Health: " + health.ToString();
             scoreText.text = "Score: " + score.ToString();
+
+            GameObject shooter = GameObject.Find("Blaster");
+            float yRotate = cam.transform.eulerAngles.y;
+            shooter.transform.position = cam.transform.position;
+            shooter.transform.eulerAngles = new Vector3(shooter.transform.eulerAngles.x, yRotate, shooter.transform.eulerAngles.z);
+            
+
         //}
+
 
     }
 }

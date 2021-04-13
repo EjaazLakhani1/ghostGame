@@ -6,6 +6,7 @@ public class mouseShoot : MonoBehaviour
 {
     public GameObject bullet;
     public GameObject shield;
+    public GameObject ghost;
     public float radius = 15.0f;
     int thisID;
     // Start is called before the first frame update
