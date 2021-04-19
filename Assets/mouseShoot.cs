@@ -18,6 +18,8 @@ public class mouseShoot : MonoBehaviour
         bullet = GameObject.Find("Bullet-"+thisID);
         shield = GameObject.Find("Cylinder");
         Physics.IgnoreCollision(bullet.GetComponent<Collider>(),shield.GetComponent<Collider>(),true);
+
+
     }
     // Update is called once per frame
 
@@ -31,11 +33,16 @@ public class mouseShoot : MonoBehaviour
         if (distance >= radius) {
             Destroy(bullet);
         }
-    }
 
+        if (GameManager.health <= 0) {
+                Destroy(this);
+                
+        }
+    }
     private void OnTriggerEnter(Collider other) {
-        Destroy(bullet);
-        GameManager.score += 10;
-        Debug.Log("test");
+            string ghostName = "Ghost-"+GameManager.id;
+            Destroy(bullet);
+            GameManager.score += 10;
+            Debug.Log("test");
     }
 }

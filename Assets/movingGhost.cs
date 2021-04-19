@@ -24,6 +24,11 @@ public class movingGhost : MonoBehaviour
         float step = 1.0f * Time.deltaTime;
         ghost.transform.position = Vector3.MoveTowards(ghost.transform.position, new Vector3(0.0f, 1.0f, 0.0f), step);
 
+        if (GameManager.health <= 0) {
+               Destroy(this);
+               
+        }
+
     }
 
     private void OnTriggerEnter(Collider other) {
